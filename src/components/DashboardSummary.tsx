@@ -14,21 +14,26 @@ export function DashboardSummary({ applications }: DashboardSummaryProps) {
     {
       label: "Active Processes",
       value: applications.filter(
-        (application) => application.status !== "offer" && application.status !== "rejected",
+        (application) =>
+          application.status !== "offer" && application.status !== "rejected",
       ).length,
     },
     {
       label: "Due Soon",
-      value: applications.filter((application) => isDueSoon(application.deadline)).length,
+      value: applications.filter((application) =>
+        isDueSoon(application.deadline),
+      ).length,
     },
     {
       label: "Offers",
-      value: applications.filter((application) => application.status === "offer").length,
+      value: applications.filter(
+        (application) => application.status === "offer",
+      ).length,
     },
   ];
 
   return (
-    <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="grid gap-3 grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => (
         <article
           key={stat.label}
