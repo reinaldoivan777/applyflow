@@ -1,22 +1,36 @@
 import { DeadlineBadge } from "@/components/DeadlineBadge";
-import { APPLICATION_STATUSES } from "@/lib/statuses";
-import type { ApplicationStatus, JobApplication } from "@/lib/types";
+import type { DragEvent } from "react";
+import type { JobApplication } from "@/lib/types";
 
 type ApplicationCardProps = {
   application: JobApplication;
   onEdit: (application: JobApplication) => void;
   onDelete: (applicationId: string) => void;
-  onStatusChange: (applicationId: string, status: ApplicationStatus) => void;
+  onDragStart: (applicationId: string) => void;
+  onDragEnd: () => void;
 };
 
 export function ApplicationCard({
   application,
   onEdit,
   onDelete,
-  onStatusChange,
+  onDragStart,
+  onDragEnd,
 }: ApplicationCardProps) {
+  function handleDragStart(event: DragEvent<HTMLElement>) {
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", application.id);
+    onDragStart(application.id);
+  }
+
   return (
-    <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+    <article
+      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={onDragEnd}
+      className="cursor-grab rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:border-blue-200 hover:shadow-md active:cursor-grabbing"
+      aria-label={`${application.company} ${application.role}`}
+    >
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-semibold text-ink">{application.company}</h3>
@@ -37,23 +51,6 @@ export function ApplicationCard({
       ) : null}
 
       <div className="mt-4 space-y-3">
-        <label className="block text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Status
-          <select
-            value={application.status}
-            onChange={(event) =>
-              onStatusChange(application.id, event.target.value as ApplicationStatus)
-            }
-            className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium normal-case tracking-normal text-ink shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-          >
-            {APPLICATION_STATUSES.map((status) => (
-              <option key={status.value} value={status.value}>
-                {status.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
         <div className="flex flex-wrap items-center gap-2">
           {application.jobUrl ? (
             <a

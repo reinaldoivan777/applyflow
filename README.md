@@ -2,6 +2,8 @@
 
 ApplyFlow is a lightweight Kanban board for tracking job applications from applied to offer. It helps job seekers see every opportunity, deadline, and next action in one place.
 
+Current version: `0.1.1`
+
 ## How to run
 
 ```bash
@@ -34,7 +36,7 @@ In scope:
 - Add, edit, and delete applications
 - Track status, deadline, next action, notes, and job URL
 - View applications in a Kanban board
-- Move applications by changing status
+- Move applications between stages with drag-and-drop
 - Highlight upcoming and overdue deadlines
 - Persist data in localStorage
 
@@ -42,7 +44,6 @@ Out of scope:
 
 - Authentication
 - Backend database
-- Drag-and-drop
 - Email reminders
 - Calendar integration
 - Resume parsing
@@ -66,7 +67,7 @@ I would measure whether users keep returning to update applications, whether the
 
 ## What I would do next
 
-Next, I would add reminders, calendar export, cloud sync, and optional drag-and-drop once the core workflow is validated.
+Next, I would add reminders, calendar export, cloud sync, and better mobile-friendly status movement once the core workflow is validated.
 
 ## AI usage
 
