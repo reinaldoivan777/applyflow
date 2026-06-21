@@ -1,5 +1,6 @@
 import { DeadlineBadge } from "@/components/DeadlineBadge";
 import type { DragEvent } from "react";
+import { downloadIcsFile, getGoogleCalendarUrl } from "@/lib/calendar";
 import type { JobApplication } from "@/lib/types";
 
 type ApplicationCardProps = {
@@ -17,6 +18,8 @@ export function ApplicationCard({
   onDragStart,
   onDragEnd,
 }: ApplicationCardProps) {
+  const googleCalendarUrl = getGoogleCalendarUrl(application);
+
   function handleDragStart(event: DragEvent<HTMLElement>) {
     event.dataTransfer.effectAllowed = "move";
     event.dataTransfer.setData("text/plain", application.id);
@@ -52,6 +55,25 @@ export function ApplicationCard({
 
       <div className="mt-4 space-y-3">
         <div className="flex flex-wrap items-center gap-2">
+          {googleCalendarUrl ? (
+            <>
+              <a
+                href={googleCalendarUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-md border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+              >
+                Add to Google Calendar
+              </a>
+              <button
+                type="button"
+                onClick={() => downloadIcsFile(application)}
+                className="inline-flex items-center justify-center rounded-md border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+              >
+                Download .ics file
+              </button>
+            </>
+          ) : null}
           {application.jobUrl ? (
             <a
               href={application.jobUrl}

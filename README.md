@@ -2,10 +2,11 @@
 
 ApplyFlow is a lightweight Kanban board for tracking job applications from applied to offer. It helps job seekers see every opportunity, deadline, and next action in one place.
 
-Current version: `0.1.4`
+Current version: `0.1.5`
 
 ## Updates
 
+- `0.1.5`: Added calendar export for application deadlines with Google Calendar links and downloadable `.ics` files.
 - `0.1.4`: Added a weekly/monthly progress view with counts for applications added, interviews, take-home tests, rejections, and offers.
 - `0.1.3`: Added search by company or role, filters for status and due soon/overdue deadlines, and sorting by deadline or recently updated.
 - `0.1.2`: Improved the dashboard summary layout so metric cards use a two-column grid on smaller screens.
@@ -47,6 +48,7 @@ In scope:
 - View weekly and monthly progress
 - Search, filter, and sort applications
 - Highlight upcoming and overdue deadlines
+- Export deadlines to Google Calendar or `.ics` files
 - Persist data in localStorage
 
 Out of scope:
@@ -54,7 +56,7 @@ Out of scope:
 - Authentication
 - Backend database
 - Email reminders
-- Calendar integration
+- Two-way calendar sync
 - Resume parsing
 - AI job matching
 
