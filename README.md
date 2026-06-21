@@ -2,10 +2,11 @@
 
 ApplyFlow is a lightweight Kanban board for tracking job applications from applied to offer. It helps job seekers see every opportunity, deadline, and next action in one place.
 
-Current version: `0.1.2`
+Current version: `0.1.3`
 
 ## Updates
 
+- `0.1.3`: Added search by company or role, filters for status and due soon/overdue deadlines, and sorting by deadline or recently updated.
 - `0.1.2`: Improved the dashboard summary layout so metric cards use a two-column grid on smaller screens.
 - `0.1.1`: Replaced the per-card status dropdown with drag-and-drop movement between Kanban stages.
 
@@ -42,6 +43,7 @@ In scope:
 - Track status, deadline, next action, notes, and job URL
 - View applications in a Kanban board
 - Move applications between stages with drag-and-drop
+- Search, filter, and sort applications
 - Highlight upcoming and overdue deadlines
 - Persist data in localStorage
 
