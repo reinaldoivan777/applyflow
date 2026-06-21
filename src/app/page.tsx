@@ -6,6 +6,7 @@ import { ApplicationForm } from "@/components/ApplicationForm";
 import { DashboardSummary } from "@/components/DashboardSummary";
 import { EmptyState } from "@/components/EmptyState";
 import { KanbanBoard } from "@/components/KanbanBoard";
+import { ProgressView } from "@/components/ProgressView";
 import { getDeadlineStatus } from "@/lib/deadline";
 import { APPLICATION_STATUSES } from "@/lib/statuses";
 import { getApplications, saveApplications } from "@/lib/storage";
@@ -129,6 +130,7 @@ export default function Home() {
     <main className="mx-auto flex min-h-screen max-w-[118rem] flex-col gap-6 px-4 py-5 sm:px-6 lg:px-8">
       <AppHeader onAdd={openCreateForm} />
       <DashboardSummary applications={applications} />
+      <ProgressView applications={applications} />
 
       {applications.length ? (
         <>
