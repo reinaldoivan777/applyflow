@@ -3,23 +3,36 @@ import type { JobApplication } from "./types";
 
 export const APPLICATION_STORAGE_KEY = "applyflow-applications";
 
+export function getStoredApplications(): JobApplication[] | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const storedApplications = window.localStorage.getItem(APPLICATION_STORAGE_KEY);
+  if (!storedApplications) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(storedApplications);
+    return Array.isArray(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 export function getApplications(): JobApplication[] {
   if (typeof window === "undefined") {
     return [];
   }
 
-  const storedApplications = window.localStorage.getItem(APPLICATION_STORAGE_KEY);
+  const storedApplications = getStoredApplications();
   if (!storedApplications) {
     saveApplications(SAMPLE_APPLICATIONS);
     return SAMPLE_APPLICATIONS;
   }
 
-  try {
-    const parsed = JSON.parse(storedApplications);
-    return Array.isArray(parsed) ? parsed : SAMPLE_APPLICATIONS;
-  } catch {
-    return SAMPLE_APPLICATIONS;
-  }
+  return storedApplications;
 }
 
 export function saveApplications(applications: JobApplication[]) {

@@ -2,10 +2,11 @@
 
 ApplyFlow is a lightweight Kanban board for tracking job applications from applied to offer. It helps job seekers see every opportunity, deadline, and next action in one place.
 
-Current version: `0.1.5`
+Current version: `0.1.6`
 
 ## Updates
 
+- `0.1.6`: Added Google login, Supabase-backed user-specific applications, and cloud sync across devices.
 - `0.1.5`: Added calendar export for application deadlines with Google Calendar links and downloadable `.ics` files.
 - `0.1.4`: Added a weekly/monthly progress view with counts for applications added, interviews, take-home tests, rejections, and offers.
 - `0.1.3`: Added search by company or role, filters for status and due soon/overdue deadlines, and sorting by deadline or recently updated.
@@ -20,6 +21,77 @@ npm run dev
 ```
 
 Open `http://localhost:3000`.
+
+## Supabase setup
+
+1. Create a Supabase project.
+2. Run `supabase-schema.sql` in the Supabase SQL editor.
+3. In Supabase Auth, enable the Google provider and add your Google OAuth credentials.
+4. Set the Supabase Auth Site URL to `http://localhost:3000` for local development.
+5. Add these Supabase Auth redirect URLs:
+
+```txt
+http://localhost:3000/auth/callback
+https://your-vercel-domain.vercel.app/auth/callback
+```
+
+6. In Google Cloud Console, create a Google OAuth Web Client.
+7. Add these authorized JavaScript origins:
+
+```txt
+http://localhost:3000
+https://your-vercel-domain.vercel.app
+```
+
+8. Add the redirect URI shown on the Supabase Google provider page to Google OAuth. It usually looks like:
+
+```txt
+https://YOUR_SUPABASE_PROJECT_ID.supabase.co/auth/v1/callback
+```
+
+9. Copy `.env.example` to `.env.local` and set:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+For Vercel production, set the same environment variables with:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://your-vercel-domain.vercel.app
+```
+
+Do not expose or commit a Supabase service role key.
+
+## Authentication
+
+ApplyFlow uses Supabase Auth with Google OAuth and SSR cookie-based sessions.
+
+### Local setup
+
+1. Create a Supabase project.
+2. Enable the Google provider in Supabase Auth.
+3. Create a Google OAuth Web Client in Google Cloud Console.
+4. Add the Supabase callback URL to Google OAuth redirect URIs.
+5. Add `http://localhost:3000/auth/callback` to Supabase redirect URLs.
+6. Copy `.env.example` to `.env.local` and set:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+7. Run the app:
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`. Signed-out users land on `/login`; signed-in users land on `/app`.
 
 ## Who it is for
 
@@ -49,22 +121,24 @@ In scope:
 - Search, filter, and sort applications
 - Highlight upcoming and overdue deadlines
 - Export deadlines to Google Calendar or `.ics` files
-- Persist data in localStorage
+- Login with Google
+- Persist signed-in user data in Supabase
+- Keep applications user-specific with row level security
+- Cloud sync applications across devices
+- Use localStorage only as a migration source for pre-auth local applications
 
 Out of scope:
 
-- Authentication
-- Backend database
 - Email reminders
 - Two-way calendar sync
 - Resume parsing
 - AI job matching
 
-These are left out to keep the prototype small and reliable within the 48-hour window.
+These are left out to keep the prototype focused.
 
 ## Assumptions
 
-I assumed users are tracking their own applications on one device, so localStorage is enough for the prototype. I also assumed the most important fields are company, role, status, deadline, and next action.
+I assumed users need private application data tied to their Google account. I also assumed the most important fields are company, role, status, deadline, and next action.
 
 ## Three questions for real users
 
@@ -78,8 +152,11 @@ I would measure whether users keep returning to update applications, whether the
 
 ## What I would do next
 
-Next, I would add reminders, calendar export, cloud sync, and better mobile-friendly status movement once the core workflow is validated.
+Next, I would add reminders and better mobile-friendly status movement once the core workflow is validated.
 
 ## AI usage
 
 I used AI to help turn the product spec into the initial project structure, component breakdown, localStorage flow, and README draft. 
+
+## Case when AI went wrong
+I found out syncing data problem with supabase.
