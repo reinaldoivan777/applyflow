@@ -4,6 +4,8 @@ ApplyFlow is a lightweight Kanban board for tracking job applications from appli
 
 Current version: `0.1.6`
 
+Live app: https://applyflow-gray.vercel.app/
+
 ## Updates
 
 - `0.1.6`: Added Google login, Supabase-backed user-specific applications, and cloud sync across devices.
@@ -32,7 +34,7 @@ Open `http://localhost:3000`.
 
 ```txt
 http://localhost:3000/auth/callback
-https://your-vercel-domain.vercel.app/auth/callback
+https://applyflow-gray.vercel.app/auth/callback
 ```
 
 6. In Google Cloud Console, create a Google OAuth Web Client.
@@ -40,7 +42,7 @@ https://your-vercel-domain.vercel.app/auth/callback
 
 ```txt
 http://localhost:3000
-https://your-vercel-domain.vercel.app
+https://applyflow-gray.vercel.app
 ```
 
 8. Add the redirect URI shown on the Supabase Google provider page to Google OAuth. It usually looks like:
@@ -155,4 +157,4 @@ Next, I would add reminders and better mobile-friendly status movement once the 
 I used AI to help turn the product spec into the initial project structure, component breakdown, localStorage flow, and README draft. 
 
 ## Case when AI went wrong
-I found out syncing data problem with supabase.
+I found out syncing data problem with supabase. And There is redirection problem when deploy to production.
