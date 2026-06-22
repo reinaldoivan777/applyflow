@@ -54,14 +54,11 @@ https://YOUR_SUPABASE_PROJECT_ID.supabase.co/auth/v1/callback
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-For Vercel production, set the same environment variables with:
-
-```env
-NEXT_PUBLIC_SITE_URL=https://your-vercel-domain.vercel.app
-```
+For Vercel production, set the same Supabase environment variables. The OAuth
+callback uses the current browser origin, so do not set a localhost callback URL
+in production environment variables.
 
 Do not expose or commit a Supabase service role key.
 
@@ -81,7 +78,6 @@ ApplyFlow uses Supabase Auth with Google OAuth and SSR cookie-based sessions.
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 7. Run the app:
