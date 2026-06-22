@@ -211,38 +211,38 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
     <div className="flex flex-col gap-6">
       <AppHeader onAdd={openCreateForm} />
       {syncError ? (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
           {syncError}
         </div>
       ) : null}
-      <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-800">
+      <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-800 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300">
         Cloud sync is enabled for this Google account.
       </div>
       <DashboardSummary applications={applications} />
       <ProgressView applications={applications} />
 
       {!hasLoadedApplications ? (
-        <section className="rounded-lg border border-slate-200 bg-white p-8 text-center text-sm text-slate-600 shadow-sm">
+        <section className="rounded-lg border border-slate-200 bg-white p-8 text-center text-sm text-slate-600 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
           Loading applications...
         </section>
       ) : applications.length ? (
         <>
-          <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+          <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="grid gap-3 md:grid-cols-[minmax(16rem,1fr)_repeat(3,minmax(11rem,auto))]">
               <label className="grid gap-1.5">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   Search
                 </span>
                 <input
                   value={searchQuery}
                   onChange={(event) => setSearchQuery(event.target.value)}
                   placeholder="Company or role"
-                  className="h-11 rounded-md border border-slate-300 px-3 text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  className="h-11 rounded-md border border-slate-300 px-3 text-sm text-ink outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-blue-950"
                 />
               </label>
 
               <label className="grid gap-1.5">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   Status
                 </span>
                 <select
@@ -250,7 +250,7 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
                   onChange={(event) =>
                     setStatusFilter(event.target.value as "all" | ApplicationStatus)
                   }
-                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
                 >
                   <option value="all">All statuses</option>
                   {APPLICATION_STATUSES.map((status) => (
@@ -262,13 +262,13 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
               </label>
 
               <label className="grid gap-1.5">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   Deadline
                 </span>
                 <select
                   value={deadlineFilter}
                   onChange={(event) => setDeadlineFilter(event.target.value as DeadlineFilter)}
-                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
                 >
                   <option value="all">All deadlines</option>
                   <option value="due-soon">Due soon</option>
@@ -277,13 +277,13 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
               </label>
 
               <label className="grid gap-1.5">
-                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <span className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   Sort
                 </span>
                 <select
                   value={sortOption}
                   onChange={(event) => setSortOption(event.target.value as SortOption)}
-                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                  className="h-11 rounded-md border border-slate-300 bg-white px-3 text-sm text-ink outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
                 >
                   <option value="recently-updated">Recently updated</option>
                   <option value="deadline">Deadline</option>
@@ -291,7 +291,7 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
               </label>
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600 dark:text-slate-400">
               <p>
                 Showing {filteredApplications.length} of {applications.length} applications
               </p>
@@ -299,7 +299,7 @@ export function ApplyFlowApp({ userId }: ApplyFlowAppProps) {
                 <button
                   type="button"
                   onClick={resetFilters}
-                  className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                  className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
                 >
                   Clear filters
                 </button>

@@ -108,20 +108,20 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/40 px-4 py-6">
-      <div className="mx-auto max-w-2xl rounded-lg bg-white p-5 shadow-xl">
+      <div className="mx-auto max-w-2xl rounded-lg bg-white p-5 shadow-xl dark:bg-slate-900">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-xl font-semibold text-ink">
+            <h2 className="text-xl font-semibold text-ink dark:text-slate-100">
               {application ? "Edit job application" : "Add job application"}
             </h2>
-            <p className="mt-1 text-sm text-slate-600">
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
               Keep the required fields tight so the board stays useful.
             </p>
           </div>
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            className="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
           >
             Close
           </button>
@@ -133,14 +133,14 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
               <input
                 value={values.company}
                 onChange={(event) => updateValue("company", event.target.value)}
-                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
               />
             </Field>
             <Field label="Role / position" error={errors.role}>
               <input
                 value={values.role}
                 onChange={(event) => updateValue("role", event.target.value)}
-                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
               />
             </Field>
           </div>
@@ -152,7 +152,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
                 onChange={(event) =>
                   updateValue("status", event.target.value as ApplicationFormValues["status"])
                 }
-                className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
               >
                 {APPLICATION_STATUSES.map((status) => (
                   <option key={status.value} value={status.value}>
@@ -166,7 +166,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
                 type="date"
                 value={values.deadline}
                 onChange={(event) => updateValue("deadline", event.target.value)}
-                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
               />
             </Field>
           </div>
@@ -177,7 +177,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
               value={values.jobUrl}
               onChange={(event) => updateValue("jobUrl", event.target.value)}
               placeholder="https://example.com/jobs/frontend-engineer"
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-blue-950"
             />
           </Field>
 
@@ -186,7 +186,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
               value={values.nextAction}
               onChange={(event) => updateValue("nextAction", event.target.value)}
               placeholder="Follow up, prepare for interview, submit take-home..."
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:ring-blue-950"
             />
           </Field>
 
@@ -195,7 +195,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
               value={values.notes}
               onChange={(event) => updateValue("notes", event.target.value)}
               rows={4}
-              className="w-full resize-y rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="w-full resize-y rounded-md border border-slate-300 px-3 py-2 text-sm text-ink focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:focus:ring-blue-950"
             />
           </Field>
 
@@ -203,7 +203,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
             <button
               type="button"
               onClick={onCancel}
-              className="rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              className="rounded-md border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               Cancel
             </button>
@@ -231,9 +231,11 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-semibold text-slate-700">{label}</span>
+      <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{label}</span>
       <span className="mt-1 block">{children}</span>
-      {error ? <span className="mt-1 block text-sm text-red-600">{error}</span> : null}
+      {error ? (
+        <span className="mt-1 block text-sm text-red-600 dark:text-red-300">{error}</span>
+      ) : null}
     </label>
   );
 }

@@ -17,16 +17,16 @@ export function ProgressView({ applications }: ProgressViewProps) {
   );
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+    <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="font-semibold text-ink">Progress</h2>
-          <p className="mt-1 text-sm text-slate-500">
+          <h2 className="font-semibold text-ink dark:text-slate-100">Progress</h2>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Track application activity by week or month.
           </p>
         </div>
 
-        <div className="inline-flex rounded-md border border-slate-300 bg-slate-50 p-1">
+        <div className="inline-flex rounded-md border border-slate-300 bg-slate-50 p-1 dark:border-slate-700 dark:bg-slate-950">
           {(["weekly", "monthly"] as const).map((option) => (
             <button
               key={option}
@@ -34,8 +34,8 @@ export function ProgressView({ applications }: ProgressViewProps) {
               onClick={() => setPeriod(option)}
               className={`rounded px-3 py-1.5 text-sm font-semibold capitalize transition ${
                 period === option
-                  ? "bg-white text-ink shadow-sm"
-                  : "text-slate-600 hover:text-ink"
+                  ? "bg-white text-ink shadow-sm dark:bg-slate-800 dark:text-slate-100"
+                  : "text-slate-600 hover:text-ink dark:text-slate-400 dark:hover:text-slate-100"
               }`}
             >
               {option}
@@ -46,9 +46,11 @@ export function ProgressView({ applications }: ProgressViewProps) {
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {stats.map((stat) => (
-          <article key={stat.label} className="rounded-md bg-slate-50 p-3">
-            <p className="text-sm font-medium text-slate-500">{stat.label}</p>
-            <p className="mt-2 text-2xl font-bold text-ink">{stat.value}</p>
+          <article key={stat.label} className="rounded-md bg-slate-50 p-3 dark:bg-slate-950">
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+              {stat.label}
+            </p>
+            <p className="mt-2 text-2xl font-bold text-ink dark:text-slate-100">{stat.value}</p>
           </article>
         ))}
       </div>

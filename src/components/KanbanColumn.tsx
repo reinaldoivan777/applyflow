@@ -55,16 +55,16 @@ export function KanbanColumn({
       onDrop={handleDrop}
       className={`min-w-0 rounded-lg border p-3 transition ${
         isDragOver
-          ? "border-blue-400 bg-blue-50 ring-2 ring-blue-200"
-          : "border-slate-200 bg-slate-100/70"
+          ? "border-blue-400 bg-blue-50 ring-2 ring-blue-200 dark:bg-blue-950/50 dark:ring-blue-900"
+          : "border-slate-200 bg-slate-100/70 dark:border-slate-800 dark:bg-slate-950/70"
       }`}
     >
       <div className="mb-3 flex items-start justify-between gap-3">
         <div>
-          <h2 className="font-semibold text-ink">{title}</h2>
-          <p className="mt-1 text-xs text-slate-500">{description}</p>
+          <h2 className="font-semibold text-ink dark:text-slate-100">{title}</h2>
+          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{description}</p>
         </div>
-        <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-sm">
+        <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 shadow-sm dark:bg-slate-800 dark:text-slate-300">
           {applications.length}
         </span>
       </div>
@@ -82,7 +82,7 @@ export function KanbanColumn({
             />
           ))
         ) : (
-          <p className="rounded-md border border-dashed border-slate-300 bg-white/70 p-4 text-sm text-slate-500">
+          <p className="rounded-md border border-dashed border-slate-300 bg-white/70 p-4 text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-400">
             No applications in this stage.
           </p>
         )}
