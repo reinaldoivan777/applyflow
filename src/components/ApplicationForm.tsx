@@ -18,6 +18,19 @@ const emptyForm: ApplicationFormValues = {
   notes: "",
 };
 
+function isValidJobUrl(value: string) {
+  if (!value) {
+    return true;
+  }
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "http:" || url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 export function ApplicationForm({ application, onCancel, onSubmit }: ApplicationFormProps) {
   const [values, setValues] = useState<ApplicationFormValues>(emptyForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -63,12 +76,8 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
       nextErrors.nextAction = "Next action is required.";
     }
 
-    if (
-      values.jobUrl.trim() &&
-      !values.jobUrl.startsWith("http://") &&
-      !values.jobUrl.startsWith("https://")
-    ) {
-      nextErrors.jobUrl = "Job URL must start with http:// or https://.";
+    if (!isValidJobUrl(values.jobUrl.trim())) {
+      nextErrors.jobUrl = "Enter a valid job URL starting with http:// or https://.";
     }
 
     setErrors(nextErrors);
@@ -164,6 +173,7 @@ export function ApplicationForm({ application, onCancel, onSubmit }: Application
 
           <Field label="Job URL" error={errors.jobUrl}>
             <input
+              type="url"
               value={values.jobUrl}
               onChange={(event) => updateValue("jobUrl", event.target.value)}
               placeholder="https://example.com/jobs/frontend-engineer"
