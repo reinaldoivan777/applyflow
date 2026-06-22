@@ -154,7 +154,7 @@ Next, I would add reminders and better mobile-friendly status movement once the 
 
 ## AI usage
 
-I used AI to help turn the product spec into the initial project structure, component breakdown, localStorage flow, and README draft. 
+I used AI to help turn the product spec into the initial project structure, component breakdown, localStorage flow, make configurations, fixing code issues, and README draft. 
 
 ## Case when AI went wrong
 I found out syncing data problem with supabase. And There is redirection problem when deploy to production.
