@@ -23,11 +23,10 @@ export default function LoginPage() {
     setIsSigningIn(true);
     setError(null);
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? window.location.origin;
     const { error: signInError } = await createClient().auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${siteUrl}/auth/callback?next=/app`,
+        redirectTo: `${window.location.origin}/auth/callback?next=/app`,
       },
     });
 
