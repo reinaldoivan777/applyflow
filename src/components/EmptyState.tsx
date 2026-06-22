@@ -4,9 +4,9 @@ type EmptyStateProps = {
 
 export function EmptyState({ onAdd }: EmptyStateProps) {
   return (
-    <section className="rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm">
-      <h2 className="text-xl font-semibold text-ink">No applications yet</h2>
-      <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600">
+    <section className="rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <h2 className="text-xl font-semibold text-ink dark:text-slate-100">No applications yet</h2>
+      <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">
         Add your first job application and keep track of what to do next.
       </p>
       <button

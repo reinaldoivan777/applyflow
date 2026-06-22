@@ -2,12 +2,13 @@
 
 ApplyFlow is a lightweight Kanban board for tracking job applications from applied to offer. It helps job seekers see every opportunity, deadline, and next action in one place.
 
-Current version: `0.1.6`
+Current version: `0.1.7`
 
 Live app: https://applyflow-gray.vercel.app/
 
 ## Updates
 
+- `0.1.7`: Added a persisted dark mode switch with full app dark theme styling.
 - `0.1.6`: Added Google login, Supabase-backed user-specific applications, and cloud sync across devices.
 - `0.1.5`: Added calendar export for application deadlines with Google Calendar links and downloadable `.ics` files.
 - `0.1.4`: Added a weekly/monthly progress view with counts for applications added, interviews, take-home tests, rejections, and offers.
@@ -123,6 +124,7 @@ In scope:
 - Persist signed-in user data in Supabase
 - Keep applications user-specific with row level security
 - Cloud sync applications across devices
+- Toggle between light and dark mode
 - Use localStorage only as a migration source for pre-auth local applications
 
 Out of scope:

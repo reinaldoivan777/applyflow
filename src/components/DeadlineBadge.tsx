@@ -5,10 +5,12 @@ type DeadlineBadgeProps = {
 };
 
 const badgeStyles = {
-  none: "border-slate-200 bg-slate-50 text-slate-600",
-  overdue: "border-red-200 bg-red-50 text-red-700",
-  "due-soon": "border-amber-200 bg-amber-50 text-amber-700",
-  normal: "border-blue-200 bg-blue-50 text-blue-700",
+  none: "border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300",
+  overdue: "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300",
+  "due-soon":
+    "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-300",
+  normal:
+    "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300",
 };
 
 export function DeadlineBadge({ deadline }: DeadlineBadgeProps) {

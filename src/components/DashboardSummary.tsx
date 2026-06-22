@@ -37,10 +37,10 @@ export function DashboardSummary({ applications }: DashboardSummaryProps) {
       {stats.map((stat) => (
         <article
           key={stat.label}
-          className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
+          className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <p className="text-sm font-medium text-slate-500">{stat.label}</p>
-          <p className="mt-2 text-3xl font-bold text-ink">{stat.value}</p>
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
+          <p className="mt-2 text-3xl font-bold text-ink dark:text-slate-100">{stat.value}</p>
         </article>
       ))}
     </section>
